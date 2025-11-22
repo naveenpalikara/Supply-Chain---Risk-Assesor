@@ -1,0 +1,12 @@
+[
+  { "country": "Taiwan", "code": "TW", "riskLevel": "HIGH", "riskScore": 6.5, "coordinates": [23.5, 121] },
+  { "country": "Yemen", "code": "YE", "riskLevel": "CRITICAL", "riskScore": 8.5, "coordinates": [15.5, 48] },
+  { "country": "China", "code": "CN", "riskLevel": "MEDIUM", "riskScore": 5.0, "coordinates": [35, 105] },
+  { "country": "India", "code": "IN", "riskLevel": "MEDIUM", "riskScore": 4.0, "coordinates": [20, 77] },
+  { "country": "Germany", "code": "DE", "riskLevel": "LOW", "riskScore": 2.5, "coordinates": [51, 9] },
+  { "country": "United States", "code": "US", "riskLevel": "LOW", "riskScore": 2.8, "coordinates": [37, -95] },
+  { "country": "Japan", "code": "JP", "riskLevel": "MEDIUM", "riskScore": 4.5, "coordinates": [36, 138] },
+  { "country": "South Korea", "code": "KR", "riskLevel": "MEDIUM", "riskScore": 4.2, "coordinates": [37, 127.5] },
+  { "country": "Ukraine", "code": "UA", "riskLevel": "CRITICAL", "riskScore": 9.0, "coordinates": [48.5, 31] },
+  { "country": "Russia", "code": "RU", "riskLevel": "HIGH", "riskScore": 7.2, "coordinates": [60, 100] }
+]

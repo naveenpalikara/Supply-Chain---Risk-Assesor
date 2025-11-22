@@ -1,0 +1,112 @@
+[
+  {
+    "id": "tsmc-taiwan-001",
+    "name": "Taiwan Semiconductor Manufacturing Co.",
+    "location": {
+      "country": "Taiwan",
+      "city": "Hsinchu",
+      "coordinates": [24.8138, 120.9675]
+    },
+    "riskScore": {
+      "total": 6.5,
+      "geopolitical": 8.5,
+      "environmental": 4.2,
+      "economic": 3.0,
+      "lastUpdated": "2025-11-22T12:00:00Z"
+    },
+    "alerts": [],
+    "dependencies": {
+      "products": ["Semiconductors", "Chips"],
+      "volumeUSD": 150000000,
+      "leadTime": 21
+    }
+  },
+  {
+    "id": "shipping-yemen-001",
+    "name": "Red Sea Logistics Hub",
+    "location": {
+      "country": "Yemen",
+      "city": "Aden",
+      "coordinates": [12.7855, 45.0187]
+    },
+    "riskScore": {
+      "total": 8.2,
+      "geopolitical": 9.5,
+      "environmental": 5.8,
+      "economic": 7.2,
+      "lastUpdated": "2025-11-22T12:00:00Z"
+    },
+    "alerts": [],
+    "dependencies": {
+      "products": ["Shipping", "Logistics"],
+      "volumeUSD": 45000000,
+      "leadTime": 35
+    }
+  },
+  {
+    "id": "auto-china-001",
+    "name": "Shenzhen Auto Parts Manufacturing",
+    "location": {
+      "country": "China",
+      "city": "Shenzhen",
+      "coordinates": [22.5431, 114.0579]
+    },
+    "riskScore": {
+      "total": 5.1,
+      "geopolitical": 6.2,
+      "environmental": 4.5,
+      "economic": 4.3,
+      "lastUpdated": "2025-11-22T12:00:00Z"
+    },
+    "alerts": [],
+    "dependencies": {
+      "products": ["Auto Parts", "Electronics"],
+      "volumeUSD": 85000000,
+      "leadTime": 28
+    }
+  },
+  {
+    "id": "pharma-india-001",
+    "name": "Mumbai Pharmaceutical Supplier",
+    "location": {
+      "country": "India",
+      "city": "Mumbai",
+      "coordinates": [19.0760, 72.8777]
+    },
+    "riskScore": {
+      "total": 3.8,
+      "geopolitical": 3.2,
+      "environmental": 4.8,
+      "economic": 3.5,
+      "lastUpdated": "2025-11-22T12:00:00Z"
+    },
+    "alerts": [],
+    "dependencies": {
+      "products": ["Pharmaceuticals", "Medical Supplies"],
+      "volumeUSD": 62000000,
+      "leadTime": 18
+    }
+  },
+  {
+    "id": "energy-germany-001",
+    "name": "Hamburg Industrial Components",
+    "location": {
+      "country": "Germany",
+      "city": "Hamburg",
+      "coordinates": [53.5511, 9.9937]
+    },
+    "riskScore": {
+      "total": 2.5,
+      "geopolitical": 2.0,
+      "environmental": 2.8,
+      "economic": 2.9,
+      "lastUpdated": "2025-11-22T12:00:00Z"
+    },
+    "alerts": [],
+    "dependencies": {
+      "products": ["Industrial Components", "Machinery"],
+      "volumeUSD": 98000000,
+      "leadTime": 24
+    }
+  }
+]

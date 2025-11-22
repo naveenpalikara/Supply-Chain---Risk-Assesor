@@ -1,0 +1,47 @@
+[
+  {
+    "id": "alert-001",
+    "type": "GEOPOLITICAL",
+    "severity": "CRITICAL",
+    "title": "Taiwan Strait Military Activity Escalates",
+    "description": "Increased military exercises detected near Taiwan Strait. Potential disruption to semiconductor supply chains.",
+    "affectedRegions": ["Taiwan", "China"],
+    "timestamp": "2025-11-21T14:30:00Z"
+  },
+  {
+    "id": "alert-002",
+    "type": "GEOPOLITICAL",
+    "severity": "HIGH",
+    "title": "Red Sea Shipping Routes Under Threat",
+    "description": "Ongoing conflict affecting shipping lanes through Red Sea. Delays expected for Asia-Europe routes.",
+    "affectedRegions": ["Yemen", "Saudi Arabia", "Egypt"],
+    "timestamp": "2025-11-20T09:15:00Z"
+  },
+  {
+    "id": "alert-003",
+    "type": "NATURAL_DISASTER",
+    "severity": "MEDIUM",
+    "title": "Typhoon Warning: Southeast Asia",
+    "description": "Category 3 typhoon approaching Philippines and Taiwan. Manufacturing facilities may be affected.",
+    "affectedRegions": ["Philippines", "Taiwan"],
+    "timestamp": "2025-11-22T06:00:00Z"
+  },
+  {
+    "id": "alert-004",
+    "type": "ECONOMIC",
+    "severity": "MEDIUM",
+    "title": "Yuan Depreciation Accelerates",
+    "description": "Chinese Yuan hits 7-month low against USD. Export costs from China may increase.",
+    "affectedRegions": ["China"],
+    "timestamp": "2025-11-19T11:45:00Z"
+  },
+  {
+    "id": "alert-005",
+    "type": "NATURAL_DISASTER",
+    "severity": "LOW",
+    "title": "Monsoon Season Begins in South Asia",
+    "description": "Heavy rainfall expected in India, Bangladesh, and Myanmar. Minor logistics delays possible.",
+    "affectedRegions": ["India", "Bangladesh", "Myanmar"],
+    "timestamp": "2025-11-18T08:00:00Z"
+  }
+]

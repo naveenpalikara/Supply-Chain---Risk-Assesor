@@ -1,0 +1,57 @@
+[
+  {
+    "id": "scenario-001",
+    "name": "Taiwan Strait Conflict",
+    "description": "Full-scale military conflict disrupts semiconductor supply from Taiwan for 6+ months",
+    "affectedCountries": ["Taiwan", "China", "Japan", "South Korea"],
+    "estimatedImpact": {
+      "supplyDisruption": 85,
+      "costIncrease": 120,
+      "duration": 180
+    }
+  },
+  {
+    "id": "scenario-002",
+    "name": "Red Sea Shipping Crisis",
+    "description": "Complete closure of Red Sea shipping routes forces Asia-Europe cargo to reroute around Africa",
+    "affectedCountries": ["Yemen", "Saudi Arabia", "Egypt", "Global"],
+    "estimatedImpact": {
+      "supplyDisruption": 45,
+      "costIncrease": 35,
+      "duration": 90
+    }
+  },
+  {
+    "id": "scenario-003",
+    "name": "Extreme Weather Event - Asia",
+    "description": "Simultaneous typhoons hit Taiwan, Philippines, and Japan disrupting electronics manufacturing",
+    "affectedCountries": ["Taiwan", "Philippines", "Japan"],
+    "estimatedImpact": {
+      "supplyDisruption": 60,
+      "costIncrease": 25,
+      "duration": 45
+    }
+  },
+  {
+    "id": "scenario-004",
+    "name": "Global Semiconductor Shortage",
+    "description": "Major fab fire in Taiwan combined with supply chain bottlenecks creates chip shortage",
+    "affectedCountries": ["Taiwan", "Global"],
+    "estimatedImpact": {
+      "supplyDisruption": 70,
+      "costIncrease": 90,
+      "duration": 120
+    }
+  },
+  {
+    "id": "scenario-005",
+    "name": "Europe Energy Crisis",
+    "description": "Natural gas shortage in Europe forces manufacturing slowdown in Germany and neighboring countries",
+    "affectedCountries": ["Germany", "France", "Italy", "Poland"],
+    "estimatedImpact": {
+      "supplyDisruption": 40,
+      "costIncrease": 55,
+      "duration": 60
+    }
+  }
+]
