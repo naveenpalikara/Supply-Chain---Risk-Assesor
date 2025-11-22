@@ -1,21 +1,21 @@
 import { useState, useEffect } from 'react';
-import type { Supplier, RiskAlert } from '../types';
-import { fetchSuppliers, fetchAlerts } from '../utils/api';
+import type { Risk, RiskAlert } from '../types';
+import { fetchRisks, fetchAlerts } from '../utils/api';
 import { getRiskBadgeColor, formatDate } from '../utils/riskCalculation';
 
 const Dashboard = () => {
-  const [suppliers, setSuppliers] = useState<Supplier[]>([]);
+  const [risks, setRisks] = useState<Risk[]>([]);
   const [alerts, setAlerts] = useState<RiskAlert[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const loadData = async () => {
       setLoading(true);
-      const [suppliersData, alertsData] = await Promise.all([
-        fetchSuppliers(),
+      const [risksData, alertsData] = await Promise.all([
+        fetchRisks(),
         fetchAlerts()
       ]);
-      setSuppliers(suppliersData);
+      setRisks(risksData);
       setAlerts(alertsData);
       setLoading(false);
     };
@@ -30,13 +30,13 @@ const Dashboard = () => {
     );
   }
 
-  const avgRisk = suppliers.length > 0
-    ? (suppliers.reduce((sum, s) => sum + s.riskScore.total, 0) / suppliers.length).toFixed(1)
+  const avgRisk = risks.length > 0
+    ? (risks.reduce((sum, s) => sum + s.riskScore.total, 0) / risks.length).toFixed(1)
     : 0;
 
   const criticalAlerts = alerts.filter(a => a.severity === 'CRITICAL').length;
-  const highRiskSuppliers = suppliers.filter(s => s.riskScore.total >= 5.0);
-  const topRiskSuppliers = [...suppliers].sort((a, b) => b.riskScore.total - a.riskScore.total).slice(0, 5);
+  const highRiskNodes = risks.filter(s => s.riskScore.total >= 5.0);
+  const topRisks = [...risks].sort((a, b) => b.riskScore.total - a.riskScore.total).slice(0, 5);
 
   return (
     <div className="max-w-7xl mx-auto">
@@ -65,11 +65,11 @@ const Dashboard = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
         <div className="bg-white rounded-lg shadow-md p-6">
           <div className="flex items-center justify-between mb-2">
-            <div className="text-sm font-medium text-gray-600">Suppliers Monitored</div>
-            <span className="text-2xl">📦</span>
-          </div>
-          <div className="text-3xl font-bold text-gray-800">{suppliers.length}</div>
-          <div className="text-sm text-gray-500 mt-1">Across {new Set(suppliers.map(s => s.location.country)).size} countries</div>
+              <div className="text-sm font-medium text-gray-600">Areas Under Assessment</div>
+              <span className="text-2xl">📦</span>
+            </div>
+          <div className="text-3xl font-bold text-gray-800">{risks.length}</div>
+          <div className="text-sm text-gray-500 mt-1">Across {new Set(risks.map(s => s.location.country)).size} countries</div>
         </div>
 
         <div className="bg-white rounded-lg shadow-md p-6">
@@ -92,10 +92,10 @@ const Dashboard = () => {
 
         <div className="bg-white rounded-lg shadow-md p-6">
           <div className="flex items-center justify-between mb-2">
-            <div className="text-sm font-medium text-gray-600">High Risk Suppliers</div>
+            <div className="text-sm font-medium text-gray-600">High Risk Nodes</div>
             <span className="text-2xl">🚨</span>
           </div>
-          <div className="text-3xl font-bold text-risk-high">{highRiskSuppliers.length}</div>
+          <div className="text-3xl font-bold text-risk-high">{highRiskNodes.length}</div>
           <div className="text-sm text-gray-500 mt-1">Need risk mitigation</div>
         </div>
       </div>
@@ -103,21 +103,21 @@ const Dashboard = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
         {/* Top Risk Suppliers */}
         <div className="bg-white rounded-lg shadow-md p-6">
-          <h3 className="text-lg font-semibold text-gray-800 mb-4">Top Risk Suppliers</h3>
+          <h3 className="text-lg font-semibold text-gray-800 mb-4">Top Risks</h3>
           <div className="space-y-3">
-            {topRiskSuppliers.map((supplier) => {
-              const riskCategory = supplier.riskScore.total >= 7.5 ? 'CRITICAL' :
-                                  supplier.riskScore.total >= 5.0 ? 'HIGH' :
-                                  supplier.riskScore.total >= 2.5 ? 'MEDIUM' : 'LOW';
+            {topRisks.map((risk) => {
+              const riskCategory = risk.riskScore.total >= 7.5 ? 'CRITICAL' :
+                                  risk.riskScore.total >= 5.0 ? 'HIGH' :
+                                  risk.riskScore.total >= 2.5 ? 'MEDIUM' : 'LOW';
 
               return (
-                <div key={supplier.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                <div key={risk.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                   <div className="flex-1">
-                    <div className="font-medium text-gray-900">{supplier.name}</div>
-                    <div className="text-sm text-gray-600">{supplier.location.country}</div>
+                    <div className="font-medium text-gray-900">{risk.name}</div>
+                    <div className="text-sm text-gray-600">{risk.location.country}</div>
                   </div>
                   <div className="flex items-center gap-3">
-                    <span className="text-lg font-bold text-gray-800">{supplier.riskScore.total.toFixed(1)}</span>
+                    <span className="text-lg font-bold text-gray-800">{risk.riskScore.total.toFixed(1)}</span>
                     <span className={`px-2 py-1 rounded text-xs font-semibold ${getRiskBadgeColor(riskCategory)}`}>
                       {riskCategory}
                     </span>
@@ -152,29 +152,29 @@ const Dashboard = () => {
         <h3 className="text-lg font-semibold text-gray-800 mb-4">Risk Distribution by Category</h3>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div className="text-center p-4 bg-red-50 rounded-lg">
-            <div className="text-4xl font-bold text-risk-critical mb-2">
-              {suppliers.filter(s => s.riskScore.total >= 7.5).length}
+            <div className="text-3xl font-bold text-risk-critical mb-2">
+              {risks.filter(s => s.riskScore.total >= 7.5).length}
             </div>
             <div className="text-sm font-medium text-gray-700">Critical Risk</div>
             <div className="text-xs text-gray-600 mt-1">≥ 7.5 score</div>
           </div>
           <div className="text-center p-4 bg-orange-50 rounded-lg">
-            <div className="text-4xl font-bold text-risk-high mb-2">
-              {suppliers.filter(s => s.riskScore.total >= 5.0 && s.riskScore.total < 7.5).length}
+              <div className="text-3xl font-bold text-risk-high mb-2">
+              {risks.filter(s => s.riskScore.total >= 5.0 && s.riskScore.total < 7.5).length}
             </div>
             <div className="text-sm font-medium text-gray-700">High Risk</div>
             <div className="text-xs text-gray-600 mt-1">5.0 - 7.4 score</div>
           </div>
           <div className="text-center p-4 bg-yellow-50 rounded-lg">
-            <div className="text-4xl font-bold text-risk-medium mb-2">
-              {suppliers.filter(s => s.riskScore.total >= 2.5 && s.riskScore.total < 5.0).length}
+              <div className="text-3xl font-bold text-risk-medium mb-2">
+              {risks.filter(s => s.riskScore.total >= 2.5 && s.riskScore.total < 5.0).length}
             </div>
             <div className="text-sm font-medium text-gray-700">Medium Risk</div>
             <div className="text-xs text-gray-600 mt-1">2.5 - 4.9 score</div>
           </div>
           <div className="text-center p-4 bg-green-50 rounded-lg">
-            <div className="text-4xl font-bold text-risk-low mb-2">
-              {suppliers.filter(s => s.riskScore.total < 2.5).length}
+              <div className="text-3xl font-bold text-risk-low mb-2">
+              {risks.filter(s => s.riskScore.total < 2.5).length}
             </div>
             <div className="text-sm font-medium text-gray-700">Low Risk</div>
             <div className="text-xs text-gray-600 mt-1">&lt; 2.5 score</div>
@@ -189,12 +189,12 @@ const Dashboard = () => {
           <div className="bg-white bg-opacity-20 rounded-lg p-4 hover:bg-opacity-30 transition-all cursor-pointer">
             <div className="text-2xl mb-2">🧮</div>
             <div className="font-medium">Calculate Risk</div>
-            <div className="text-sm text-blue-100">Assess supplier risk score</div>
+            <div className="text-sm text-blue-100">Assess risk score</div>
           </div>
           <div className="bg-white bg-opacity-20 rounded-lg p-4 hover:bg-opacity-30 transition-all cursor-pointer">
             <div className="text-2xl mb-2">📊</div>
             <div className="font-medium">Analyze Portfolio</div>
-            <div className="text-sm text-blue-100">Review all suppliers</div>
+            <div className="text-sm text-blue-100">Review all risks</div>
           </div>
           <div className="bg-white bg-opacity-20 rounded-lg p-4 hover:bg-opacity-30 transition-all cursor-pointer">
             <div className="text-2xl mb-2">🎯</div>

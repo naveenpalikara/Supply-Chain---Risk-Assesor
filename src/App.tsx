@@ -2,11 +2,11 @@ import { useState } from 'react';
 import Dashboard from './components/Dashboard';
 import RiskCalculator from './components/RiskCalculator';
 import AlertsDashboard from './components/AlertsDashboard';
-import SupplierAnalyzer from './components/SupplierAnalyzer';
+import RiskAnalyzer from './components/RiskAnalyzer';
 import ScenarioSimulator from './components/ScenarioSimulator';
 import ErrorBoundary from './components/ErrorBoundary';
 
-type Tab = 'dashboard' | 'calculator' | 'suppliers' | 'alerts' | 'scenarios';
+type Tab = 'dashboard' | 'calculator' | 'risks' | 'alerts' | 'scenarios';
 
 function App() {
   const [activeTab, setActiveTab] = useState<Tab>('dashboard');
@@ -14,7 +14,7 @@ function App() {
   const tabs = [
     { id: 'dashboard' as Tab, label: 'Dashboard', icon: '🏠' },
     { id: 'calculator' as Tab, label: 'Risk Calculator', icon: '🧮' },
-    { id: 'suppliers' as Tab, label: 'Suppliers', icon: '📦' },
+    { id: 'risks' as Tab, label: 'Risks', icon: '⚠️' },
     { id: 'alerts' as Tab, label: 'Alerts', icon: '⚠️' },
     { id: 'scenarios' as Tab, label: 'Scenarios', icon: '🎯' },
   ];
@@ -25,8 +25,8 @@ function App() {
         return <Dashboard />;
       case 'calculator':
         return <RiskCalculator />;
-      case 'suppliers':
-        return <SupplierAnalyzer />;
+        case 'risks':
+          return <RiskAnalyzer />;
       case 'alerts':
         return <AlertsDashboard />;
       case 'scenarios':
@@ -44,9 +44,9 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
-            <div className="flex items-center">
-              <span className="text-2xl mr-2">⚡</span>
-              <span className="text-xl font-bold text-gray-800">SC Risk Intel</span>
+              <div className="flex items-center">
+              <img src="/favicon.svg" alt="logo" className="w-7 h-7 mr-2" />
+                <span className="text-xl font-bold text-gray-800">supply chain risk assessor</span>
             </div>
 
             {/* Desktop Navigation */}

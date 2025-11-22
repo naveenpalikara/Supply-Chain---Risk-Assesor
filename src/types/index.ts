@@ -22,7 +22,7 @@ export interface RiskAlert {
   timestamp: string;
 }
 
-export interface Supplier {
+export interface Risk {
   id: string;
   name: string;
   location: Location;
@@ -30,7 +30,6 @@ export interface Supplier {
   alerts: RiskAlert[];
   dependencies?: {
     products: string[];
-    volumeUSD: number;
     leadTime: number;
   };
 }
